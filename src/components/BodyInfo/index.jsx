@@ -27,8 +27,8 @@ export const BodyInfo = () => {
             </div>
             <div>
               <span>
-                Actualmente, en el catálogo han sido registradas +150
-                fundaciones.
+                Actualmente, en el catálogo han sido registradas <strong>+150
+                fundaciones.</strong>
               </span>
             </div>
           </ContentTextOne>
@@ -55,7 +55,6 @@ export const BodyInfo = () => {
 };
 
 const ContainerBox = styled.div`
-  /* background-color: red; */
   width: 100%;
 `;
 
@@ -110,7 +109,7 @@ const ContentTextTwo = styled.div`
   }
 
   h1 {
-    color: #334fad;
+    color: var(--PrimaryColor);
     margin: 0 0 1rem 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 25px;
@@ -147,7 +146,7 @@ const ImgContainer = styled.div`
 `;
 
 const LabelData = styled.label`
-  color: #0a0220;
+  color: var(--PrimaryColor);
   text-align: center;
   width: 250px;
   font-size: 35px;

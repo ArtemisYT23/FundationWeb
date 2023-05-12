@@ -52,13 +52,14 @@ const ContainerTitle = styled.div`
   text-align: justify;
 
   h1 {
-    color: rgb(61, 165, 197);
-    border-bottom: 1px solid rgb(61, 165, 197);
+    color: var(--PrimaryColor);
+    border-bottom: 1px solid var(--PrimaryColor);
   }
 
   span {
     text-align: center;
     padding: 1rem 0 0 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 `;
 
@@ -73,7 +74,7 @@ const ContentGrid = styled.div`
 const Card = styled.div`
   width: 380px;
   height: 260px;
-  background-color: rgb(61, 165, 197);
+  background-color: var(--PrimaryColor);
   margin: 1rem;
   display: flex;
   justify-content: center;
@@ -84,7 +85,7 @@ const Card = styled.div`
     color: #fff;
     font-size: 25px;
     margin: 1rem 0 1rem 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
   }
 `;

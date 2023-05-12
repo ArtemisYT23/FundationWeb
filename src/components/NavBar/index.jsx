@@ -22,15 +22,13 @@ export const NavBar = () => {
     { id: "1", name: "Catalogo" },
     { id: "2", name: "Charlas" },
     { id: "3", name: "Blog" },
-    { id: "4", name: "Blog" },
-    { id: "5", name: "Blog" },
 ]
 
   window.addEventListener("resize", showButton);
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbarInitial">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
             <img

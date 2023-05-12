@@ -55,13 +55,13 @@ const FirstContent = styled.div`
   flex-direction: column;
 
   p {
-    color: #18488f;
+    color: var(--PrimaryColor);
     font-size: 34px;
   }
 
   label {
     font-family: Segoe Script;
-    color: #18488f;
+    color: var(--PrimaryColor);
     font-size: 24px;
   }
 

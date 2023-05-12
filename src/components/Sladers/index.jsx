@@ -82,7 +82,7 @@ const Carousel = styled(Slider)`
 const ContainerSlider = styled.div`
   width: 100%;
   height: 480px;
-  background-color: #008cff;
+  background-color: var(--PrimaryColor);
   display: flex;
 
   @media screen and (max-width: 767px) {
