@@ -12,7 +12,7 @@ const useStyless = makeStyles((theme) => ({
   CreatedComentary: {
     position: "absolute",
     width: "400px",
-    height: "400px",
+    height: "460px",
     backgroundColor: "white",
     border: "2px solid white",
     boxShadow: theme.shadows[2],
@@ -44,8 +44,9 @@ export const ComentaryCreatedModal = () => {
   const { ComentaryCreate } = comentaryState;
   const { TallerData } = tallerState;
   const [nameComentary, setNameComentary] = useState("");
-  //const [nameImage, setNameImage] = useState("");
+  const [title, setTitle] = useState("");
   const [review, setReview] = useState("");
+  const [nameImage, setNameImage] = useState("");
   const [imagen, setImagen] = useState("");
   const [idTaller, setIdTaller] = useState("");
 
@@ -53,15 +54,29 @@ export const ComentaryCreatedModal = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("NameComentary", nameComentary);
+    formData.append("Title", title);
     formData.append("Review", review);
+    formData.append("NameImage", nameImage);
     formData.append("Imagen", imagen);
     formData.append("Id_Taller", idTaller);
     dispatch(CreateComentary(formData));
     abrirCerrarModal();
+    setNameComentary("");
+    setTitle("");
+    setReview("");
+    setNameImage("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalCreatedComentary(false));
+    setNameComentary("");
+    setTitle("");
+    setReview("");
+    setNameImage("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const setFile = (e) => {
@@ -85,6 +100,14 @@ export const ComentaryCreatedModal = () => {
         />
         <br />
         <TextField
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required={true}
+          label="Titulo"
+          className={styless.textfield}
+        />
+        <br />
+        <TextField
           value={review}
           onChange={(e) => setReview(e.target.value)}
           required={true}
@@ -92,14 +115,14 @@ export const ComentaryCreatedModal = () => {
           className={styless.textfield}
         />
         <br />
-        {/* <TextField
+        <TextField
           value={nameImage}
           onChange={(e) => setNameImage(e.target.value)}
           required={true}
           label="Nombre de la imagen"
           className={styless.textfield}
         />
-        <br /> */}
+        <br />
         <br />
 
         <input

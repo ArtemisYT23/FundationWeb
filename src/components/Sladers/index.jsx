@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
-import Sucre from "../../../assets/sucre.png";
+import Sucre from "../../../assets/logoFundation.png";
 
 export const Sladers = () => {
   const { sladerState } = useSelector((store) => store);

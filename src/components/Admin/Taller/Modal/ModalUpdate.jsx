@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { openModalUpdateTaller, UpdateTaller } from "../../../../redux/States/Taller";
+import {
+  openModalUpdateTaller,
+  UpdateTaller,
+} from "../../../../redux/States/Taller";
 
 const useStyless = makeStyles((theme) => ({
   UpdateComentary: {
@@ -61,10 +64,18 @@ export const TallerUpdateModal = () => {
     };
     dispatch(UpdateTaller(formData, TallerSelect?.id));
     abrirCerrarModal();
+    setTitle("");
+    setReview("");
+    setRecomendation("");
+    setDateTaller("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalUpdateTaller(false));
+    setTitle("");
+    setReview("");
+    setRecomendation("");
+    setDateTaller("");
   };
 
   const ComentaryView = (

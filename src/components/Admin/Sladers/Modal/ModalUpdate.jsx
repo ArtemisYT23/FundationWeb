@@ -12,7 +12,7 @@ const useStyless = makeStyles((theme) => ({
   UpdateComentary: {
     position: "absolute",
     width: "400px",
-    height: "400px",
+    height: "260px",
     backgroundColor: "white",
     border: "2px solid white",
     boxShadow: theme.shadows[2],
@@ -48,7 +48,7 @@ export const SladerUpdateModal = () => {
   const [imgInput, setImgInput] = useState(false);
 
   useEffect(() => {
-    setNameImage(SladerSelect?.nameImagen)
+    setNameImage(SladerSelect?.nameImagen);
     setImgInitial(SladerSelect?.imgInitial);
     setImgInput(SladerSelect?.imgInput);
   }, [SladerSelect]);
@@ -64,10 +64,18 @@ export const SladerUpdateModal = () => {
 
     dispatch(UpdateSlader(formData, SladerSelect?.id));
     abrirCerrarModal();
+    setNameImage("");
+    setImagen("");
+    setImgInitial(false);
+    setImgInput(false);
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalUpdateSlader(false));
+    setNameImage("");
+    setImagen("");
+    setImgInitial(false);
+    setImgInput(false);
   };
 
   const setFile = (e) => {

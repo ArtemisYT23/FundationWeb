@@ -5,18 +5,20 @@ import { PrivateRoutes } from "../../../routes/routes";
 import { FaBars, FaUserEdit } from "react-icons/fa";
 import "../../../styles/NavBarAdmin.css";
 import Sucre from "../../../../assets/sucre.png";
+import { useDispatch } from "react-redux";
+import { clearSesionUserToken } from "../../../redux/States/LoginSesion";
 
 export const NavBar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-
 
   const menuItem = [
     {
       path: `${PrivateRoutes.comentary}`,
       name: "Comentarios",
-      icon:  <FaUserEdit />
+      icon: <FaUserEdit />,
     },
     {
       path: `${PrivateRoutes.video}`,
@@ -29,16 +31,22 @@ export const NavBar = () => {
       icon: <FaUserEdit />,
     },
     {
-        path: `${PrivateRoutes.sladers}`,
-        name: "Sladers",
-        icon: <FaUserEdit />,
-      },
+      path: `${PrivateRoutes.sladers}`,
+      name: "Sladers",
+      icon: <FaUserEdit />,
+    },
     {
       path: `${PrivateRoutes.imagenTaller}`,
       name: "Imagen de taller",
       icon: <FaUserEdit />,
-    }
+    },
   ];
+
+  const handleExit = (e) => {
+    e.preventDefault();
+    dispatch(clearSesionUserToken());
+    navigate("/loginAdmin")
+  }
 
   return (
     <div className="container-Side">
@@ -68,6 +76,17 @@ export const NavBar = () => {
             </div>
           </NavLink>
         ))}
+        <NavLink to={"/"} className="link" onClick={(e) => handleExit(e)}>
+          <div className="icon">
+            <FaUserEdit />
+          </div>
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Salir
+          </div>
+        </NavLink>
       </div>
     </div>
   );

@@ -57,10 +57,18 @@ export const TallerCreatedModal = () => {
     };
     dispatch(CreateTaller(formData));
     abrirCerrarModal();
+    setTitle("");
+    setReview("");
+    setRecomendation("");
+    setDateTaller("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalCreatedTaller(false));
+    setTitle("");
+    setReview("");
+    setRecomendation("");
+    setDateTaller("");
   };
 
   const ComentaryView = (

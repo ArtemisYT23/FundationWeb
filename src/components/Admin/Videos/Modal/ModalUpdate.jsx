@@ -58,10 +58,14 @@ export const VideoUpdateModal = () => {
     };
     dispatch(UpdateVideo(formData, VideoSelect?.id));
     abrirCerrarModal();
+    setTitle("");
+    setUrlYoutube("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalUpdateVideo(false));
+    setTitle("");
+    setUrlYoutube("");
   };
 
   const VideoView = (

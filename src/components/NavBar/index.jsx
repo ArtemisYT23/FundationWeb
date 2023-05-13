@@ -1,9 +1,10 @@
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { PublicRoutes } from "../../routes/routes";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "../../styles/NavBar.css";
-import Sucre from "../../../assets/sucre.png";
+import Sucre from "../../../assets/logoFundation.png";
 
 export const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -19,10 +20,10 @@ export const NavBar = () => {
   const showButton = () => {};
 
   const Category = [
-    { id: "1", name: "Catalogo" },
-    { id: "2", name: "Charlas" },
-    { id: "3", name: "Blog" },
-]
+    // { id: "1", name: "Catalogo", route: `${PublicRoutes}` },
+    { id: "2", name: "Talleres", route: `${PublicRoutes.tallerInformation}` },
+    { id: "3", name: "Realizar Donacion", route: `${PublicRoutes.tallerInformation}` },
+  ];
 
   window.addEventListener("resize", showButton);
 
@@ -47,23 +48,34 @@ export const NavBar = () => {
                 key={obj.id}
                 onClick={(e) => closeMobileMenu(e, obj.id)}
               >
-                <Link to={obj.name} className="nav-links">
+                <Link to={obj.route} className="nav-links">
                   {obj.name}
                 </Link>
               </li>
             ))}
           </ul>
-          
+
           <Link to="/" className="navbar-logo">
-            <img
+            {/* <img
               src={Sucre}
               alt="...cargando"
               style={{ width: "70px:", height: "68px" }}
-            />
+            /> */}
+            <Title>Apoyemos Causas Nobles</Title>
+            
           </Link>
-
         </div>
       </nav>
     </>
   );
 };
+
+const Title = styled.div`
+  font-size: 22px;
+  font-family: Segoe Script;
+
+  @media screen and (max-width:767px){
+    font-size: 16px;
+    margin: 0 0 0 5rem;
+  }
+`;

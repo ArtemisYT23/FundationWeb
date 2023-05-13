@@ -55,7 +55,7 @@ export const getAllTaller = () => async (dispatch, getState) => {
     }
 }
 
-//filtrar video seleccionado
+//filtrar taller seleccionado
 export const getFilterTallerSelected = (idComentary, modal) => async (dispatch, getState) => {
     const { tallerState } = getState();
     const { TallerData } = tallerState;
@@ -71,6 +71,11 @@ export const getFilterTallerSelected = (idComentary, modal) => async (dispatch, 
         dispatch({
             type: GET_FILTER_SELECTED_TALLER,
             payload: { ...tallerState, TallerSelect, TallerDelete: true }
+        }) 
+    } else {
+        dispatch({
+            type: GET_FILTER_SELECTED_TALLER,
+            payload: { ...tallerState, TallerSelect }
         })
     }
 }

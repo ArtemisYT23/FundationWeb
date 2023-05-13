@@ -45,6 +45,12 @@ const ContainerData = styled.div`
   height: 450px;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width:767px){
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
 `;
 
 const FirstContent = styled.div`
@@ -77,6 +83,10 @@ const FirstContent = styled.div`
     font-size: 16px;
     line-height: 1.8;
   }
+
+  @media screen and (max-width:767px){
+    width: 100%;
+  }
 `;
 
 const SecondContent = styled.div`
@@ -93,5 +103,9 @@ const SecondContent = styled.div`
   img {
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (max-width:767px){
+    width: 100%;
   }
 `;

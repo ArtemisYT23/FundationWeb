@@ -3,7 +3,10 @@ import { useState, useEffect } from "react";
 import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { openModalCreatedVideo, CreateVideo } from "../../../../redux/States/Video";
+import {
+  openModalCreatedVideo,
+  CreateVideo,
+} from "../../../../redux/States/Video";
 
 const useStyless = makeStyles((theme) => ({
   CreatedVideo: {
@@ -50,10 +53,14 @@ export const VideoCreatedModal = () => {
     };
     dispatch(CreateVideo(formData));
     abrirCerrarModal();
+    setTitle("");
+    setUrlYoutube("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalCreatedVideo(false));
+    setTitle("");
+    setUrlYoutube("");
   };
 
   const VideoView = (
