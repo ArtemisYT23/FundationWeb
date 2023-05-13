@@ -63,6 +63,11 @@ const Content = styled.div`
   height: 600px;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width:767px){
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 const FirstContent = styled.div`
@@ -71,6 +76,10 @@ const FirstContent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @media screen and (max-width:767px){
+    width: 100%;
+  }
 `;
 
 const ContentTextOne = styled.div`
@@ -129,6 +138,11 @@ const SecondContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width:767px){
+    width: 100%;
+    height: 450px;
+  }
 `;
 
 const ImgContainer = styled.div`

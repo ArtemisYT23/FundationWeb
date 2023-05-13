@@ -40,6 +40,10 @@ const ContentCard = styled.div`
   height: 500px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width:767px){
+   height: 100%;
+  }
 `;
 
 const ContainerTitle = styled.div`
@@ -61,6 +65,13 @@ const ContainerTitle = styled.div`
     padding: 1rem 0 0 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+
+  @media screen and (max-width:767px){
+    span {
+      width: 250px;
+      text-align: center;
+    }
+  }
 `;
 
 const ContentGrid = styled.div`
@@ -69,6 +80,10 @@ const ContentGrid = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width:767px){
+    flex-direction: column;
+  }
 `;
 
 const Card = styled.div`

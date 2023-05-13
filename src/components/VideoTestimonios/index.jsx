@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export const VideoTestimonios = () => {
+  const { videoState } = useSelector((store) => store);
+  const { VideoData } = videoState;
+
   const [getUrl, setGetUrl] = useState(
     "https://www.youtube.com/embed/JNZ0bkAGgKU"
   );
@@ -35,47 +39,21 @@ export const VideoTestimonios = () => {
                 <span>Más testimonios:</span>
               </CardInfo>
 
-              <Card>
-                <div
-                  onClick={(e) =>
-                    setGetUrl("https://www.youtube.com/embed/JNZ0bkAGgKU")
-                  }
-                >
-                  <img
-                    src="https://blogstorage10prueba.blob.core.windows.net/datablog/Container"
-                    alt="...cargando"
-                  />
-                  <p>Fundación "María Guare"</p>
-                </div>
-              </Card>
-
-              <Card>
-                <div
-                  onClick={(e) =>
-                    setGetUrl("https://www.youtube.com/embed/SzXqae7Ww2o")
-                  }
-                >
-                  <img
-                    src="https://blogstorage10prueba.blob.core.windows.net/datablog/Container"
-                    alt="...cargando"
-                  />
-                  <p>"Emmanuel en Victoria"</p>
-                </div>
-              </Card>
-
-              <Card>
-                <div
-                  onClick={(e) =>
-                    setGetUrl("https://www.youtube.com/embed/ifQckSHEIhU")
-                  }
-                >
-                  <img
-                    src="https://blogstorage10prueba.blob.core.windows.net/datablog/Container"
-                    alt="...cargando"
-                  />
-                  <p>"Mujeres Sin Límites Cañar"</p>
-                </div>
-              </Card>
+              {VideoData.map((video, i) => (
+                <Card key={i}>
+                  <div
+                    onClick={(e) =>
+                      setGetUrl(video.urlYoutube)
+                    }
+                  >
+                    <img
+                      src="https://blogstoragedatapruebas.blob.core.windows.net/datablog/Taller3"
+                      alt="...cargando"
+                    />
+                    <p>{video.title}</p>
+                  </div>
+                </Card>
+              ))}
             </SecondPlayList>
           </ContentPlay>
         </ContainerVideos>
@@ -93,6 +71,10 @@ const ContentCard = styled.div`
   height: 700px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width:767px){
+    height: 100%;
+  }
 `;
 
 const ContainerTitle = styled.div`
@@ -113,6 +95,20 @@ const ContainerTitle = styled.div`
     text-align: center;
     padding: 1rem 0 0 0;
   }
+
+  @media screen and (max-width:767px){
+    height: 100%;
+
+    h1 {
+      margin: 1rem 0 1rem 0;
+    }
+
+    span {
+      width: 240px;
+      text-align: center;
+      margin: 1rem 0 1rem 0;
+    }
+  }
 `;
 
 const ContainerVideos = styled.div`
@@ -126,6 +122,12 @@ const ContentPlay = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media screen and (max-width:767px){
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
 `;
 
 const FirstPlayVideo = styled.div`
@@ -134,6 +136,10 @@ const FirstPlayVideo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width:767px){
+    width: 100%;
+  }
 `;
 
 const SecondPlayList = styled.div`
@@ -141,6 +147,10 @@ const SecondPlayList = styled.div`
   height: 90%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width:767px){
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 const CardInfo = styled.div`
@@ -155,6 +165,14 @@ const CardInfo = styled.div`
     padding: 0.8rem;
     color: #c4c4c4;
     border-bottom: 1px solid #c4c4c4;
+  }
+
+  @media screen and (max-width:767px){
+    width: 100%;
+
+    span {
+      width: 100%;
+    }
   }
 `;
 
@@ -185,9 +203,9 @@ const Card = styled.div`
 
   &:hover {
     background: #f7f0f0;
-    
+
     p {
-        color: #117c9c;
+      color: #117c9c;
     }
   }
 `;

@@ -6,7 +6,7 @@ export const Footer = () => {
         <div className='footer-container'>
         <section className='footer-subscription'>
           <p className='footer-subscription-heading'>
-            Join the Adventure newsletter to receive our best vacation deals
+            Join the Donation in this fundation
           </p>
           <p className='footer-subscription-text'>
             email support or information.

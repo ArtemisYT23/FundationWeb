@@ -1,6 +1,8 @@
 export const PublicRoutes = {
     initialState: "initialState",
     informationFundation: "informationFundation",
+    tallerInformation: "tallerInformation",
+    tallerDetails: "tallerDetails",
     loginAdmin: 'loginAdmin',
 }
 

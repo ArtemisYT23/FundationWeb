@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { Modal, TextField,  } from "@material-ui/core";
+import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { openModalUpdateComentary, UpdateComentary } from "../../../../redux/States/Comentary";
+import {
+  openModalUpdateComentary,
+  UpdateComentary,
+} from "../../../../redux/States/Comentary";
 
 const useStyless = makeStyles((theme) => ({
   UpdateComentary: {
@@ -50,7 +53,6 @@ export const ComentaryUpdateModal = () => {
     setNameComentary(ComentarySelect?.nameComentary);
     setReview(ComentarySelect?.review);
     setNameImage(ComentarySelect?.nameImage);
-    
   }, [ComentarySelect]);
 
   const handleSubmit = (e) => {
@@ -63,10 +65,20 @@ export const ComentaryUpdateModal = () => {
     formData.append("Id_Taller", idTaller);
     dispatch(UpdateComentary(formData, ComentarySelect?.id));
     abrirCerrarModal();
+    setNameComentary("");
+    setNameImage("");
+    setReview("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalUpdateComentary(false));
+    setNameComentary("");
+    setNameImage("");
+    setReview("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const setFile = (e) => {
@@ -95,7 +107,7 @@ export const ComentaryUpdateModal = () => {
           required={true}
           label="Descripcion"
           multiline={true}
-          style={{ width: "100%"}}
+          style={{ width: "100%" }}
         />
         <br />
         <br />

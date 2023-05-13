@@ -3,13 +3,16 @@ import { useState, useEffect } from "react";
 import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { openModalCreatedSlader, CreateSlader } from "../../../../redux/States/Slader";
+import {
+  openModalCreatedSlader,
+  CreateSlader,
+} from "../../../../redux/States/Slader";
 
 const useStyless = makeStyles((theme) => ({
   CreatedComentary: {
     position: "absolute",
     width: "400px",
-    height: "260px",
+    height: "320px",
     backgroundColor: "white",
     border: "2px solid white",
     boxShadow: theme.shadows[2],
@@ -39,6 +42,7 @@ export const SladerCreatedModal = () => {
   const styless = useStyless();
   const { sladerState } = useSelector((store) => store);
   const { sladerCreate } = sladerState;
+  const [nameImagen, setNameImagen] = useState("");
   const [imagen, setImagen] = useState("");
   const [imgInitial, setImgInitial] = useState(false);
   const [imgInput, setImgInput] = useState(false);
@@ -46,15 +50,24 @@ export const SladerCreatedModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("NameImagen", nameImagen);
     formData.append("Imagen", imagen);
     formData.append("ImgInitial", imgInitial);
     formData.append("ImgInput", imgInput);
     dispatch(CreateSlader(formData));
     abrirCerrarModal();
+    setNameImagen("");
+    setImagen("");
+    setImgInitial(false);
+    setImgInput(false);
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalCreatedSlader(false));
+    setNameImagen("");
+    setImagen("");
+    setImgInitial(false);
+    setImgInput(false);
   };
 
   const setFile = (e) => {
@@ -68,6 +81,16 @@ export const SladerCreatedModal = () => {
         <div align="center">
           <TitleModal>Crear Nuevo Slader</TitleModal>
         </div>
+        <br />
+        <TextField
+          value={nameImagen}
+          onChange={(e) => setNameImagen(e.target.value)}
+          required={true}
+          label="Nombre de la imagen"
+          style={{ width: "100%" }}
+        />
+
+        <br />
         <br />
         <input
           type="file"
@@ -97,9 +120,7 @@ export const SladerCreatedModal = () => {
         <br />
         <br />
         <div align="right">
-          {imagen != "" && (
-            <SaveButton>Crear</SaveButton>
-          )}
+          {imagen != "" && <SaveButton>Crear</SaveButton>}
 
           <CancelButton onClick={() => abrirCerrarModal()}>
             Cancelar

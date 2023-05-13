@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { Modal, TextField,  } from "@material-ui/core";
+import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { openModalUpdateImagenTaller, UpdateImagenTaller } from "../../../../redux/States/ImagenTaller";
+import {
+  openModalUpdateImagenTaller,
+  UpdateImagenTaller,
+} from "../../../../redux/States/ImagenTaller";
 
 const useStyless = makeStyles((theme) => ({
   UpdateComentary: {
@@ -45,7 +48,7 @@ export const ImagenTallerUpdateModal = () => {
   const [IdTaller, setIdTaller] = useState("");
 
   useEffect(() => {
-    setNameImage(ImagenTallerSelect?.nameImage)
+    setNameImage(ImagenTallerSelect?.nameImage);
     setIdTaller(ImagenTallerSelect?.id_Taller);
   }, [ImagenTallerSelect]);
 
@@ -57,10 +60,16 @@ export const ImagenTallerUpdateModal = () => {
     formData.append("Id_Taller", IdTaller);
     dispatch(UpdateImagenTaller(formData, ImagenTallerSelect?.id));
     abrirCerrarModal();
+    setNameImage("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalUpdateImagenTaller(false));
+    setNameImage("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const setFile = (e) => {
@@ -103,8 +112,7 @@ export const ImagenTallerUpdateModal = () => {
         <br />
         <br />
         <div align="right">
-          {imagen != "" &&
-             <SaveButton>Actualizar</SaveButton>}
+          {imagen != "" && <SaveButton>Actualizar</SaveButton>}
 
           <CancelButton onClick={() => abrirCerrarModal()}>
             Cancelar

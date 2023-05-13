@@ -6,6 +6,7 @@ import { getUserTockenSesion } from "../../redux/States/LoginSesion";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { PrivateRoutes } from "../../routes/routes";
+import Sucre from "../../../assets/logoFundation.png";
 import "../../styles/Login.css";
 
 export const LoginSesion = () => {
@@ -68,15 +69,14 @@ export const LoginSesion = () => {
   return (
     <div className="container">
       <div className="img">
-        {/* <img src={bg} alt="...cargando" /> */}
       </div>
       <div className="login-content">
         <form onSubmit={handleSubmit}>
-          {/* <img src={Sucre} alt="..cargando" /> */}
-          {/* <h2 className="title">Iniciar Sesión</h2> */}
+          <img src={Sucre} alt="..cargando" /> 
+          <h2 className="title">Iniciar Sesión</h2>
           <br />
           <br />
-          <br />
+  
           <div className="input-div one">
             <div className="i">
               <i className="fas fa-user"></i>

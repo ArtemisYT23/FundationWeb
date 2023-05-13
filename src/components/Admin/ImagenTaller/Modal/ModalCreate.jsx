@@ -3,13 +3,16 @@ import { useState, useEffect } from "react";
 import { Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { openModalCreatedImagenTaller, CreateImagenTaller } from "../../../../redux/States/ImagenTaller";
+import {
+  openModalCreatedImagenTaller,
+  CreateImagenTaller,
+} from "../../../../redux/States/ImagenTaller";
 
 const useStyless = makeStyles((theme) => ({
   CreatedComentary: {
     position: "absolute",
     width: "400px",
-    height: "240px",
+    height: "260px",
     backgroundColor: "white",
     border: "2px solid white",
     boxShadow: theme.shadows[2],
@@ -40,20 +43,28 @@ export const ImagenTallerCreatedModal = () => {
   const { imgTallerState, tallerState } = useSelector((store) => store);
   const { imagenTallerCreate } = imgTallerState;
   const { TallerData } = tallerState;
+  const [nameImage, setNameImage] = useState("");
   const [imagen, setImagen] = useState("");
   const [IdTaller, setIdTaller] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("NameImage", nameImage);
     formData.append("Imagen", imagen);
     formData.append("Id_Taller", IdTaller);
     dispatch(CreateImagenTaller(formData));
     abrirCerrarModal();
+    setNameImage("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const abrirCerrarModal = () => {
     dispatch(openModalCreatedImagenTaller(false));
+    setNameImage("");
+    setImagen("");
+    setIdTaller("");
   };
 
   const setFile = (e) => {
@@ -67,6 +78,14 @@ export const ImagenTallerCreatedModal = () => {
         <div align="center">
           <TitleModal>Subir imagen a un Taller</TitleModal>
         </div>
+        <br />
+        <TextField
+          value={nameImage}
+          onChange={(e) => setNameImage(e.target.value)}
+          required={true}
+          label="Nombre de la imagen"
+          style={{ width: "100%" }}
+        />
         <br />
         <br />
 
